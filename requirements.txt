@@ -5,3 +5,4 @@ ipykernel
 
 geopy
 LatLon23
+ipyleaflet

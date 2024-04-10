@@ -8,3 +8,5 @@ LatLon23
 ipyleaflet
 
 geopandas
+
+tqdm

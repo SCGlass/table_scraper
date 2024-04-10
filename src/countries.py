@@ -1,3 +1,5 @@
+# Dictionary of all countries within the "https://unece.org/trade/cefact/unlocode-code-list-country-and-territory" website
+
 country_codes = {
     'AF': 'Afghanistan',
     'AX': 'Åland_Islands',

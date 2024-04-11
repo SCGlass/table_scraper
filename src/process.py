@@ -3,6 +3,7 @@ import re
 import pandas as pd
 from geopy.geocoders import Nominatim
 from main import load_data
+from tqdm import tqdm
 
 
 class PortCleaner:

@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm
+from countries import country_codes
 
 def scrape_and_save_tables(country_dict: dict) -> None:
     # Create a folder to store the CSV files
@@ -38,5 +39,6 @@ def scrape_and_save_tables(country_dict: dict) -> None:
                 print(f"Table scraped and saved for {country} as {filename}")
             else:
                 print(f"No table found for {country}")
-        else:
-            print(f"Failed to fetch data for {country}")
+            
+
+scrape_and_save_tables(country_codes)

@@ -2,7 +2,7 @@ from LatLon23 import LatLon
 import re
 import pandas as pd
 from geopy.geocoders import Nominatim
-from main import load_data
+from data import load_data
 from tqdm import tqdm
 
 

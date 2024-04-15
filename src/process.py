@@ -2,13 +2,12 @@ from LatLon23 import LatLon
 import re
 import pandas as pd
 from geopy.geocoders import Nominatim
-from data import load_data
-from tqdm import tqdm
+
 
 
 class PortCleaner:
-    def __init__(self) -> None:
-        self.df = load_data()
+    def __init__(self, df: pd.DataFrame) -> None:
+        self.df = df
 
     @staticmethod
     def format_table(df: pd.DataFrame) -> pd.DataFrame:
@@ -17,6 +16,8 @@ class PortCleaner:
         df.columns = df.iloc[0]
         df = df.drop(3)
         
+        # Filter out rows with Nan value in Function column
+        df = df.dropna(subset=['Function'])
         # Filter rows where 'Function' column contains '1'
         df = df[df["Function"].str.contains("1")]
         
@@ -109,9 +110,9 @@ class PortCleaner:
         
         df.drop(columns="Coordinates", inplace=True)
 
+        df['Latitude'] = df['Latitude'].round(6)
+        df['Longitude'] = df['Longitude'].round(6)
+
         return df
 
-port_cleaner= PortCleaner()
-df = port_cleaner.process_dataframe()
-print(df.info())
     

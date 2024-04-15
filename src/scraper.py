@@ -9,6 +9,9 @@ def scrape_and_save_tables(country_dict: dict) -> None:
     # Create a folder to store the CSV files
     if not os.path.exists("raw_country_data"):
         os.makedirs("raw_country_data")
+    else:
+        print("Folder 'raw_country_data' already exists, skipping scraping and saving")
+        return
     
     for country_code, country in tqdm(country_dict.items(), desc="Progress", total=len(country_dict)):
         country_code = country_code.lower()

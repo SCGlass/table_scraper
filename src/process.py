@@ -4,6 +4,9 @@ import pandas as pd
 from geopy.geocoders import Nominatim
 
 
+pd.set_option('future.no_silent_downcasting', True)
+
+
 
 class PortCleaner:
     def __init__(self, df: pd.DataFrame) -> None:
@@ -81,8 +84,8 @@ class PortCleaner:
         merged_df = pd.merge(df, missing_coord[["Name", "Lat", "Lon"]], on="Name", how="left", suffixes=('', '_missing'))
 
         # Update Latitude and Longitude columns in the original dataframe
-        df['Latitude'] = merged_df['Lat'].fillna(df['Latitude']).astype(float)
-        df['Longitude'] = merged_df['Lon'].fillna(df['Longitude']).astype(float)
+        df['Latitude'] = merged_df['Lat'].fillna(df['Latitude']).infer_objects(copy=False)
+        df['Longitude'] = merged_df['Lon'].fillna(df['Longitude']).infer_objects(copy=False)
 
 
         return df

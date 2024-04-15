@@ -12,7 +12,7 @@ def load_data() ->list:
     
     if directory is None:
         print("Directory 'raw_country_data' not found.")
-        return None
+        return []
     
     files = os.listdir(directory)
 
@@ -37,3 +37,12 @@ def save_processed_data(processed_dfs):
         country = country_codes.get(country_code, "Unknown")
         filename = f"cleaned_port_data/{country_code}_{country}.csv"
         processed_df.to_csv(filename, index=False)
+
+def check_flagfile():
+    flag_file_path = "cleaned_port_data/processing_completed.flag"
+    return os.path.exists(flag_file_path)
+
+def create_flag_file():
+    flag_file_path = "cleaned_port_data/processing_completed.flag"
+    with open(flag_file_path, "w") as f:
+        pass

@@ -12,7 +12,7 @@ The program will scrape all the data from the website and save as raw data files
 
 This is an example of what the data looked like before processing:
 <div align="center">
-    <img src="assets/unclean.png" width="400px"</img> 
+    <img src="assets/unclean.png" width="800px"</img> 
 </div>
 
 

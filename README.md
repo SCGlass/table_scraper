@@ -11,7 +11,9 @@ The program will scrape all the data from the website and save as raw data files
 ## The data process
 
 This is an example of what the data looked like before processing:
-
+<div align="center">
+    <img src="assets/unclean.png" width="400px"</img> 
+</div>
 
 
 

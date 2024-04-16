@@ -1,12 +1,21 @@
+# Data processing tools
 pandas
+
+# Scraping tools
 beautifulsoup4
 requests
+
+# notebook tools
 ipykernel
 
+# geographical tools
 geopy
 LatLon23
 ipyleaflet
-
 geopandas
 
+# frontend tools
 tqdm
+
+# linting tools
+flake8

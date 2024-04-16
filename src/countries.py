@@ -1,4 +1,4 @@
-# Dictionary of all countries within the "https://unece.org/trade/cefact/unlocode-code-list-country-and-territory" website
+# data:"https://unece.org/trade/cefact/unlocode-code-list-country-and-territory"
 
 country_codes = {
     'AF': 'Afghanistan',

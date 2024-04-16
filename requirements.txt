@@ -19,3 +19,6 @@ tqdm
 
 # linting tools
 flake8
+
+# test tools
+pytest

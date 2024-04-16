@@ -20,5 +20,12 @@ This is an example of the data after the cleaning process:
     <img src="assets/cleaned.png" width="600px"</img> 
 </div>
 
+The cleaned data frame only contain the original "Name", "NameWoDiacritics" and "Status". I created the "Country_code" and "Location_code" from the original data frame column "LOCODE".
+
+The original data frame contained a column called "Function". This contained numbers that would reference to what type of transport location the place has (see below). I was only interested in locations with number one within this column as these are port locations.  
+<div align="center">
+    <img src="assets/function.png" width="600px"</img> 
+</div>  
+
 
 

@@ -1,7 +1,7 @@
-import pandas as pd
 from process import PortCleaner
 from scraper import scrape_and_save_tables
-from data import load_data, save_processed_data, check_flagfile, create_flag_file
+from data import load_data, save_processed_data
+from data import check_flagfile, create_flag_file
 from tqdm import tqdm
 from countries import country_codes
 
@@ -12,15 +12,15 @@ def run_programme():
         print("Data processing has already been complete. Ending process")
         return
 
-    dataframes = load_data()
+    dfs = load_data()
 
-    if not dataframes:
-        user_input = input("Raw data does not exist. Do you wish to download? (y/n)")
+    if not dfs:
+        user_input = input("Raw data n/a. Do you wish to download? (y/n)")
         if user_input == "y":
             scrape_and_save_tables(country_codes)
             # Load the data again after downloading
-            dataframes = load_data()
-            if not dataframes:
+            dfs = load_data()
+            if not dfs:
                 print("No data available after scraping. Exiting")
                 return
         elif user_input != "n":
@@ -33,22 +33,23 @@ def run_programme():
     user_input2 = input("Do you wish to process the raw data? (y/n)")
     if user_input2 == "y":
         # Process raw data
-        processed_dfs = []
-        progress_bar = tqdm(total=len(dataframes), desc="Processing Data")
-        for df in dataframes:
-            progress_bar.set_description(f"Processing Data - {len(processed_dfs)}/{len(dataframes)}")
+        proc_dfs = []
+        prog_bar = tqdm(total=len(dfs), desc="Processing Data")
+        for df in dfs:
+            prog_bar.set_description(f"Processing: {len(proc_dfs)}/{len(dfs)}")
             port_cleaner = PortCleaner(df)
             processed_df = port_cleaner.process_dataframe()
-            processed_dfs.append(processed_df)
-            progress_bar.update(1)
-        
-        progress_bar.close()
-        
-        save_processed_data(processed_dfs)
+            proc_dfs.append(processed_df)
+            prog_bar.update(1)
+
+        prog_bar.close()
+
+        save_processed_data(proc_dfs)
 
         create_flag_file()
         print("Processing data is complete")
-    else: 
+    else:
         print("Exiting programme")
+
 
 run_programme()

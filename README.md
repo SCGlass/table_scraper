@@ -87,6 +87,6 @@ How can I build upon this project? :
 ## About the Author
 
 My name is Sam Glass and have been a student within AI and Machine Learning at IT Högskolan in Gothenburg, Sweden for the last two years. 
-I am very enthusiastic about anything to do with AI and Data. Particularly I am interested about Data Engineering and its importance within the ever evolving area of AI.
+I am very enthusiastic about anything to do with AI and Data. Particularly I am interested in Data Engineering and its importance within the ever evolving area of AI.
 Please feel free to contact me about anything to with this project. Suggestions, improvements and developments are always welcome. 
 

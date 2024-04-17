@@ -7,7 +7,8 @@ This contains information about the United Nations code for trade and transport 
 The aim of the project was to scrape the data from the website and then process it and save the processed data for future use within a database.
 
 The program will scrape all the data from the website and save as raw data files in csv format. Then it will process the raw data files into cleaned csv files for future use. 
----
+
+
 ## The data process
 
 This is an example of what the data looked like before processing:
@@ -27,7 +28,7 @@ The original data frame contained a column called "Function". This contained num
     <img src="assets/function.png" width="600px"</img> 
 </div>
 
----
+
 ## Running the program
 
 Clone the repo and install requirements. This program is using : ```python 3.9.18```
@@ -40,7 +41,7 @@ git@github.com:SCGlass/table_scraper.git
 source {YOURDEVPATH}/venv/bin/activate
 
 # install requirements
-pip install -r "requirments.txt"
+pip install -r "requirements.txt"
 
 ```
 
@@ -58,4 +59,26 @@ If you were to run the program and the processed data file is present, it will d
 
 ## Scripts explained
 
+- ```src/main.py``` - This is where the program is run from. It contain the user input prompts and triggers the functions within other scripts.
+- ```src/scraper.py`` - The main scraping function is within this script. It downloads the raw data and saves into a folder within the src.
+- ```src/countries.py`` - This contains a dictionary that has all the countries and country codes used within the website that the data is scraped from. This can be easily adjusted for future reference.
+- ``src/data.py`` - This contains a process for loading the data from the raw_country_data file before processing and also a process for saving the processed data.
+- ``src/process.py`` - The cleaning process for the data frames is within this script. This cleans and created new columns. It also searches for missing coordinates by using an API from streetmap. 
 
+## Other relevant files
+
+```exploration/mapping.ipynb`` - Within this notebook is a mapping plot. This could be useful as you can check how the plotting of the port locations looks like and to see if there are any outliers (see example below)
+
+<div align="center">
+    <img src="assets/mapping.png" width="600px"</img> 
+</div>
+
+## What next? 
+
+This project has been very useful as I have learnt how to process and create a manual Data pipeline.
+
+How can I build upon this project? :
+- Create a automatized pipeline, that would scrape and process the data at a scheduled time
+- Run the program within an amazon virtual environment, so that the process would not interrupt the use of a stand alone computer.
+- Create a database from the cleaned .csv files.
+- Find a solution to fix any outliers within the processed data.  

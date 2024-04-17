@@ -51,23 +51,23 @@ Once all the packages have been installed you can now run the program within the
 python3 main.py
 ```
 
-The command line program will prompt with instructions. First it will ask if you wish to download the raw data if it is not present within the source folder. When you select "y" it will scrape the data tables from the website and save as individual .csv files within a folder named "raw_country_data" which will be within the src folder. You will then be prompted if you wish to process the raw data. You can opt out and do it later if you require to. 
+The command line program will prompt with instructions. First it will ask if you wish to download the raw data, if it is not present within the source folder. When you select "y" it will scrape the data tables from the website and save as individual ".csv" files within a folder named "raw_country_data" which will be within the src folder. You will then be prompted if you wish to process the raw data. You can opt out and do it later if you require to. 
 
-If you were to return at a later data to process the data. The program will detect it the raw data is present or not and will ask to process. If you wish to process it will save the files as .csv within a folder call "cleaned_port_data". 
+If you were to return at a later data to process the data. The program will detect if the raw data is present or not and will ask to process. If you wish to process, it will save the files as ".csv" within a folder called "cleaned_port_data". 
 
 If you were to run the program and the processed data file is present, it will detect this and end the program.
 
 ## Scripts explained
 
-- ```src/main.py``` - This is where the program is run from. It contain the user input prompts and triggers the functions within other scripts.
+- ```src/main.py``` - This is where the program is run from. It contains the user input prompts and triggers the functions within other scripts.
 - ```src/scraper.py`` - The main scraping function is within this script. It downloads the raw data and saves into a folder within the src.
 - ```src/countries.py`` - This contains a dictionary that has all the countries and country codes used within the website that the data is scraped from. This can be easily adjusted for future reference.
 - ``src/data.py`` - This contains a process for loading the data from the raw_country_data file before processing and also a process for saving the processed data.
-- ``src/process.py`` - The cleaning process for the data frames is within this script. This cleans and created new columns. It also searches for missing coordinates by using an API from streetmap. 
+- ``src/process.py`` - The cleaning process for the data frames is within this script. This cleans and created new columns. It also searches for missing coordinates by using an API from "Streetmap". 
 
 ## Other relevant files
 
-```exploration/mapping.ipynb`` - Within this notebook is a mapping plot. This could be useful as you can check how the plotting of the port locations looks like and to see if there are any outliers (see example below)
+```exploration/mapping.ipynb``` - Within this notebook is a mapping plot. This could be useful as you can check how the plotting of the port locations looks like and to see if there are any outliers (see example below("Austria))
 
 <div align="center">
     <img src="assets/mapping.png" width="600px"</img> 
@@ -78,7 +78,7 @@ If you were to run the program and the processed data file is present, it will d
 This project has been very useful as I have learnt how to process and create a manual Data pipeline.
 
 How can I build upon this project? :
-- Create a automatized pipeline, that would scrape and process the data at a scheduled time
-- Run the program within an amazon virtual environment, so that the process would not interrupt the use of a stand alone computer.
+- Create a automatized pipeline, that would scrape and process the data at a scheduled time.
+- Run the program within an Amazon virtual environment, so that the process would not interrupt the use of a stand alone computer.
 - Create a database from the cleaned .csv files.
 - Find a solution to fix any outliers within the processed data.  

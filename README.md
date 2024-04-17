@@ -21,13 +21,14 @@ This is an example of the data after the cleaning process:
     <img src="assets/cleaned.png" width="600px"</img> 
 </div>
 
-The cleaned data frame only contain the original "Name", "NameWoDiacritics" and "Status". I created the "Country_code" and "Location_code" from the original data frame column "LOCODE".
+The cleaned data frame only contains the original "Name", "NameWoDiacritics" and "Status". I created the "Country_code" and "Location_code" from the original data frame column "LOCODE".
 
 The original data frame contained a column called "Function". This contained numbers that would reference to what type of transport location the place has (see below). I was only interested in locations with number one within this column as these are port locations.  
 <div align="center">
     <img src="assets/function.png" width="600px"</img> 
 </div>
 
+I also added Latitude and Longitude columns that are converted to decimal form from the original coordinate colum which contained the Latitude and Longitude with "N,E,S,W" symbols. If any of the original coordinates were missing I used an API that searched for the locations based on the name and country code of the location. This then filled in any missing values. 
 
 ## Running the program
 
@@ -60,10 +61,10 @@ If you were to run the program and the processed data file is present, it will d
 ## Scripts explained
 
 - ```src/main.py``` - This is where the program is run from. It contains the user input prompts and triggers the functions within other scripts.
-- ```src/scraper.py`` - The main scraping function is within this script. It downloads the raw data and saves into a folder within the src.
-- ```src/countries.py`` - This contains a dictionary that has all the countries and country codes used within the website that the data is scraped from. This can be easily adjusted for future reference.
-- ``src/data.py`` - This contains a process for loading the data from the raw_country_data file before processing and also a process for saving the processed data.
-- ``src/process.py`` - The cleaning process for the data frames is within this script. This cleans and created new columns. It also searches for missing coordinates by using an API from "Streetmap". 
+- ```src/scraper.py``` - The main scraping function is within this script. It downloads the raw data and saves into a folder within the src.
+- ```src/countries.py``` - This contains a dictionary that has all the countries and country codes used within the website that the data is scraped from. This can be easily adjusted for future reference.
+- ```src/data.py``` - This contains a process for loading the data from the raw_country_data file before processing and also a process for saving the processed data.
+- ```src/process.py``` - The cleaning process for the data frames is within this script. This cleans and created new columns. It also searches for missing coordinates by using an API from "Streetmap". 
 
 ## Other relevant files
 
@@ -81,4 +82,6 @@ How can I build upon this project? :
 - Create a automatized pipeline, that would scrape and process the data at a scheduled time.
 - Run the program within an Amazon virtual environment, so that the process would not interrupt the use of a stand alone computer.
 - Create a database from the cleaned .csv files.
-- Find a solution to fix any outliers within the processed data.  
+- Find a solution to fix any outliers within the processed data.
+
+## About the Author

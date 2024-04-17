@@ -35,10 +35,23 @@ def save_processed_data(processed_dfs):
         os.makedirs("cleaned_port_data")
 
     for processed_df in processed_dfs:
-        country_code = processed_df["Country_code"].iloc[0]
-        country = country_codes.get(country_code, "Unknown")
-        filename = f"cleaned_port_data/{country_code}_{country}.csv"
-        processed_df.to_csv(filename, index=False)
+        # Check if the processed DataFrame is not empty
+        if not processed_df.empty:
+            # Check if the 'Country_code' column exists in the DataFrame
+            if 'Country_code' in processed_df.columns:
+                # Check if there are any rows in the DataFrame
+                if not processed_df.index.empty:
+                    country_code = processed_df["Country_code"].iloc[0]
+                    country = country_codes.get(country_code, "Unknown")
+                    filename = f"cleaned_port_data/{country_code}_{country}.csv"
+                    processed_df.to_csv(filename, index=False)
+                else:
+                    print("Warning: No rows in the processed DataFrame. Skipping saving data.")
+            else:
+                print("Warning: 'Country_code' column not found in the processed DataFrame. Skipping saving data.")
+        else:
+            print("Warning: processed DataFrame is empty. Skipping saving data.")
+
 
 
 def check_flagfile():

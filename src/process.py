@@ -106,7 +106,6 @@ class PortCleaner:
         return df
 
     def process_dataframe(self) -> pd.DataFrame:
-
         df = self.df
 
         df = self.format_table(df)
@@ -115,22 +114,26 @@ class PortCleaner:
         coords_parsed = df['Coordinates'].apply(
             lambda x: PortCleaner.parse_coordinate(x)).apply(pd.Series)
 
-        # Add the parsed coordinates to the DataFrame
-        df[['Latitude', 'Longitude']] = coords_parsed
+        # Check if coords_parsed is empty
+        if not coords_parsed.empty:
+            # Add the parsed coordinates to the DataFrame
+            df[['Latitude', 'Longitude']] = coords_parsed
 
-        # Filter out non-string values in the 'Coordinates' column
-        non_string = df[df['Coordinates'].apply(
-            lambda x: not isinstance(x, str))].index
+            # Filter out non-string values in the 'Coordinates' column
+            non_string = df[df['Coordinates'].apply(
+                lambda x: not isinstance(x, str))].index
 
-        # Assign None to Lat and Long for rows with non-string coords
-        df.loc[non_string, ['Latitude',
-                            'Longitude']] = None
+            # Assign None to Lat and Long for rows with non-string coords
+            df.loc[non_string, ['Latitude',
+                                'Longitude']] = None
 
-        df = self.geolocate(df)
+            df = self.geolocate(df)
 
-        df.drop(columns="Coordinates", inplace=True)
+            df.drop(columns="Coordinates", inplace=True)
 
-        df['Latitude'] = df['Latitude'].round(6)
-        df['Longitude'] = df['Longitude'].round(6)
+            # Check if DataFrame is not empty before accessing/modifying columns
+            if not df.empty:
+                df['Latitude'] = df['Latitude'].round(6)
+                df['Longitude'] = df['Longitude'].round(6)
 
         return df

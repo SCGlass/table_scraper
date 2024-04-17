@@ -83,10 +83,11 @@ How can I build upon this project? :
 - Run the program within an Amazon virtual environment, so that the process would not interrupt the use of a stand alone computer.
 - Create a database from the cleaned .csv files.
 - Find a solution to fix any outliers within the processed data.
+- Use "Google" API instead of "Streetmaps".
 
 ## About the Author
 
 My name is Sam Glass and have been a student within AI and Machine Learning at IT Högskolan in Gothenburg, Sweden for the last two years. 
 I am very enthusiastic about anything to do with AI and Data. Particularly I am interested in Data Engineering and its importance within the ever evolving area of AI.
-Please feel free to contact me about anything to with this project. Suggestions, improvements and developments are always welcome. 
+Please feel free to contact me about anything to do with this project. Suggestions, improvements and developments are always welcome. 
 

@@ -53,18 +53,15 @@ class PortCleaner:
             pattern = r'(\d{2})(\d{2})([NS])\s*(\d{3})(\d{2})([EW])'
             match = re.match(pattern, coord_str)
             if match:
+                lat_deg, lat_min, lat_dir, lon_deg, lon_min, lon_dir = match.groups()
+                lat = int(lat_deg) + int(lat_min) / 60 * (-1 if lat_dir == 'S' else 1)
+                lon = int(lon_deg) + int(lon_min) / 60 * (-1 if lon_dir == 'W' else 1)
 
-                lat_deg, lat_min, lat_dir, \
-                    lon_deg, lon_min, lon_dir = match.groups()
-                lat = int(lat_deg) + int(lat_min) / 60 * (
-                    -1 if lat_dir == 'S' else 1)
-                lon = int(lon_deg) + int(lon_min) / 60 * (
-                    -1 if lon_dir == 'W' else 1)
+                # Multiply latitude and longitude by -1 if direction is 'S' or 'W'
+                lat = lat * (-1 if lat_dir == 'S' else 1)
+                lon = lon * (-1 if lon_dir == 'W' else 1)
 
-                # Use LatLon23 to convert decimal degrees
-                latlon = LatLon(lat, lon)
-
-                return latlon.lat.decimal_degree, latlon.lon.decimal_degree
+                return lat, lon
             else:
                 return None, None
         else:

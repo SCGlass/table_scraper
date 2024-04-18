@@ -54,10 +54,9 @@ class PortCleaner:
             match = re.match(pattern, coord_str)
             if match:
                 lat_deg, lat_min, lat_dir, lon_deg, lon_min, lon_dir = match.groups()
-                lat = int(lat_deg) + int(lat_min) / 60 * (-1 if lat_dir == 'S' else 1)
-                lon = int(lon_deg) + int(lon_min) / 60 * (-1 if lon_dir == 'W' else 1)
+                lat = int(lat_deg) + (int(lat_min) / 60)
+                lon = int(lon_deg) + (int(lon_min) / 60)
 
-                # Multiply latitude and longitude by -1 if direction is 'S' or 'W'
                 lat = lat * (-1 if lat_dir == 'S' else 1)
                 lon = lon * (-1 if lon_dir == 'W' else 1)
 

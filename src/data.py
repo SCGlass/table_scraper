@@ -43,7 +43,7 @@ def save_processed_data(processed_dfs):
                 if not processed_df.index.empty:
                     country_code = processed_df["Country_code"].iloc[0]
                     country = country_codes.get(country_code, "Unknown")
-                    filename = f"cleaned_port_data/{country_code}_{country}.csv"
+                    filename = f"cleaned_port_data/{country_code}_{country.lower()}.csv"
                     processed_df.to_csv(filename, index=False)
                 else:
                     print("Warning: No rows in the processed DataFrame. Skipping saving data.")

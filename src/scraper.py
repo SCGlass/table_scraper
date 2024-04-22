@@ -44,7 +44,7 @@ def scrape_and_save_tables(country_dict: dict) -> None:
                 # Create the Data Frame
                 df = pd.DataFrame(data)
 
-                filename = f"raw_country_data/{country_code}_{country}.csv"
+                filename =  "raw_country_data/" + country_code + "_" + country + ".csv"
                 df.to_csv(filename, index=False)
                 print(f"Table scraped and saved for {country} as {filename}")
             else:
